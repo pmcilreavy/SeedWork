@@ -1,19 +1,17 @@
-using System.Diagnostics;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SeedWork;
 using SeedWork.CommandDispatcher;
+using SeedWork.DomainEventDispatcher;
 using System.Reflection;
 using Todo.Domain;
 using Todo.Infrastructure;
 using Todo.Web;
 
 var builder = WebApplication.CreateBuilder(args);
-
 var executable = Assembly.GetExecutingAssembly().Location;
 var path = Path.GetDirectoryName(executable);
-AppDomain.CurrentDomain.SetData("DataDirectory", path);
 
-// Add services to the container.
+AppDomain.CurrentDomain.SetData("DataDirectory", path);
 
 builder.Services.Scan(scan => scan
     .FromAssemblies(TheDomain.Assembly)
@@ -31,9 +29,6 @@ builder.Services.Scan(scan => scan
     .AsSelf()
     .WithTransientLifetime());
 
-//    .WithTransientLifetime());
-
-
 builder.Services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
 builder.Services.TryAddScoped<IWriteRepository, TodoContext>();
 
@@ -43,24 +38,22 @@ builder.Services.AddDbContext<TodoContext>(
         options.ConfigureDbContext(
             false,
             "Data Source=|DataDirectory|Database.sqlite;",
-            60,
+            30,
             TheInfrastructure.Assembly.FullName!);
-    }, ServiceLifetime.Scoped);
+    });
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var x = builder.Services
-    .OrderBy(o => o.ServiceType.Name)
-    .Select(o => o.ServiceType.FullName)
-    .Where(o => o.Contains("Seed") || o.Contains("Todo")).ToList();
+//var x = builder.Services
+//    .OrderBy(o => o.ServiceType.Name)
+//    .Select(o => o.ServiceType.FullName)
+//    .Where(o => o.Contains("Seed") || o.Contains("Todo")).ToList();
+//x.ForEach(s => Debug.WriteLine(s!));
 
-x.ForEach(s => Debug.WriteLine(s!));
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -68,9 +61,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

@@ -11,13 +11,10 @@ public static class DbContextBuilderExtensions
         int databaseCommandTimeout,
         string migrationsAssembly)
     {
-        if (enableSensitiveDataLogging)
-        {
-            options.EnableSensitiveDataLogging();
-        }
+        if (enableSensitiveDataLogging) options.EnableSensitiveDataLogging();
 
         options.UseSqlite(databaseConnectionString,
-            sqliteOptionsAction: sqlOptions =>
+            sqlOptions =>
             {
                 sqlOptions.MigrationsAssembly(migrationsAssembly);
                 sqlOptions.CommandTimeout(databaseCommandTimeout == 0 ? 60 : databaseCommandTimeout);

@@ -7,7 +7,10 @@ public class CreateTodoCommandHandler : ICommandHandler<CreateTodoCommand, Guid>
 {
     private readonly IWriteRepository _writer;
 
-    public CreateTodoCommandHandler(IWriteRepository writer) => _writer = writer;
+    public CreateTodoCommandHandler(IWriteRepository writer)
+    {
+        _writer = writer;
+    }
 
     public async Task<Guid> Handle(CreateTodoCommand command, CancellationToken cancellationToken)
     {

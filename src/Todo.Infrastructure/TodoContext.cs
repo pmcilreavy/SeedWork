@@ -1,25 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Reflection;
+using Microsoft.EntityFrameworkCore;
 using SeedWork;
-using SeedWork.Exceptions;
-using System.Reflection;
+using SeedWork.DomainEventDispatcher;
+using Todo.Domain.Exceptions;
 
 namespace Todo.Infrastructure;
 
 public class TodoContext : DbContext, IWriteRepository
 {
     private readonly IDomainEventDispatcher _domainEventDispatcher;
-    public DbSet<Domain.Aggregates.Todo.Todo> Todos => Set<Domain.Aggregates.Todo.Todo>();
 
-    public TodoContext(DbContextOptions<TodoContext> options, IDomainEventDispatcher domainEventDispatcher) : base(options)
+    public TodoContext(DbContextOptions<TodoContext> options, IDomainEventDispatcher domainEventDispatcher) :
+        base(options)
     {
         _domainEventDispatcher = domainEventDispatcher;
+
         Database.EnsureCreated();
     }
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-    }
+    public DbSet<Domain.Aggregates.Todo.Todo> Todos => Set<Domain.Aggregates.Todo.Todo>();
 
     public async Task SaveAsync(CancellationToken cancellationToken = default)
     {
@@ -31,10 +30,7 @@ public class TodoContext : DbContext, IWriteRepository
 
         domainEntities.ForEach(entity => entity.Entity.ClearDomainEvents());
 
-        foreach (var domainEvent in domainEvents)
-        {
-            await _domainEventDispatcher.Dispatch(domainEvent, cancellationToken);
-        }
+        foreach (var domainEvent in domainEvents) await _domainEventDispatcher.Dispatch(domainEvent, cancellationToken);
 
         //_auditService?.SetAuditData(this);
         SetCreationAndModificationFieldsForAuditableEntities(this);
@@ -54,6 +50,13 @@ public class TodoContext : DbContext, IWriteRepository
         return Set<T>().Add(aggregate).Entity;
     }
 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+    }
+
     private void SetCreationAndModificationFieldsForAuditableEntities(DbContext context)
     {
         var addedOrEditedEntries = context.ChangeTracker
@@ -62,13 +65,11 @@ public class TodoContext : DbContext, IWriteRepository
             .ToList();
 
         foreach (var entry in addedOrEditedEntries)
-        {
             if (entry.Entity is AggregateRoot aggregateRoot)
             {
                 var now = DateTimeOffset.UtcNow;
                 aggregateRoot.RecordCreation(now, "ME");
                 aggregateRoot.RecordModification(now, "ME");
             }
-        }
     }
 }

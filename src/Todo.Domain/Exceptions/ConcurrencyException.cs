@@ -1,4 +1,4 @@
-﻿namespace SeedWork.Exceptions;
+﻿namespace Todo.Domain.Exceptions;
 
 public class ConcurrencyException : Exception
 {

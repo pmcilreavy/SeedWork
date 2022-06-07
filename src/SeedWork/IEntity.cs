@@ -2,5 +2,4 @@
 
 public interface IEntity : IIdentifiable<int>
 {
-
 }

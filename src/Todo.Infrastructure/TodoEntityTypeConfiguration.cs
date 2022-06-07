@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Todo.Domain.Aggregates;
 
 namespace Todo.Infrastructure;
 
@@ -19,6 +18,5 @@ public class TodoEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Aggre
         configuration.Property(a => a.ModifiedOn);
 
         configuration.ToTable(nameof(Todo), "dbo");
-
     }
 }

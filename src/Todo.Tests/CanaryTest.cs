@@ -1,13 +1,12 @@
 using Xunit;
 
-namespace Todo.Tests
+namespace Todo.Tests;
+
+public class CanaryTest
 {
-    public class CanaryTest
+    [Fact]
+    public void GivenXunitIsSetupCorrectly_WhenExecuted_ThenThisTestWillAlwaysSucceed()
     {
-        [Fact]
-        public void GivenXunitIsSetupCorrectly_WhenExecuted_ThenThisTestWillAlwaysSucceed()
-        {
-            Assert.True(true);
-        }
+        Assert.True(true);
     }
 }
