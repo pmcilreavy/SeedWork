@@ -4,5 +4,5 @@ namespace Todo.Infrastructure;
 
 public static class TheInfrastructure
 {
-    public static Assembly Assembly => typeof(TheInfrastructure).GetTypeInfo().Assembly;
+    public static Assembly Assembly => typeof(TheInfrastructure).Assembly;
 }

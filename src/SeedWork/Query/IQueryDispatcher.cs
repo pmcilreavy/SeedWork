@@ -1,4 +1,4 @@
-﻿namespace SeedWork.QueryDispatcher;
+﻿namespace SeedWork.Query;
 
 public interface IQueryDispatcher
 {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace SeedWork.DomainEventDispatcher;
+namespace SeedWork.DomainEvent;
 
 public class DomainEventHandlerWrapperImpl<TDomainEvent> : DomainEventHandlerWrapper<TDomainEvent>
     where TDomainEvent : IDomainEvent

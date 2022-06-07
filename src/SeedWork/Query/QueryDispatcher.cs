@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace SeedWork.QueryDispatcher;
+namespace SeedWork.Query;
 
 public class QueryDispatcher : IQueryDispatcher
 {

@@ -1,5 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using SeedWork.DomainEventDispatcher;
+using SeedWork.DomainEvent;
 
 namespace SeedWork;
 

@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
 using SeedWork;
-using SeedWork.DomainEventDispatcher;
+using SeedWork.DomainEvent;
 using Todo.Domain.Exceptions;
 
 namespace Todo.Infrastructure;

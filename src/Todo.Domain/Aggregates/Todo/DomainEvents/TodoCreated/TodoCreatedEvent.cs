@@ -1,4 +1,4 @@
-﻿using SeedWork.DomainEventDispatcher;
+﻿using SeedWork.DomainEvent;
 
 namespace Todo.Domain.Aggregates.Todo.DomainEvents.TodoCreated;
 

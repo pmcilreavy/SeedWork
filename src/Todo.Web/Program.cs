@@ -1,8 +1,8 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SeedWork;
-using SeedWork.CommandDispatcher;
-using SeedWork.DomainEventDispatcher;
 using System.Reflection;
+using SeedWork.Command;
+using SeedWork.DomainEvent;
 using Todo.Domain;
 using Todo.Infrastructure;
 using Todo.Web;

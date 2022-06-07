@@ -16,6 +16,7 @@ public static class DbContextBuilderExtensions
         options.UseSqlite(databaseConnectionString,
             sqlOptions =>
             {
+                sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);
                 sqlOptions.MigrationsAssembly(migrationsAssembly);
                 sqlOptions.CommandTimeout(databaseCommandTimeout == 0 ? 60 : databaseCommandTimeout);
             });

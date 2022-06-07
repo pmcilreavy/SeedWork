@@ -1,4 +1,4 @@
-﻿namespace SeedWork.DomainEventDispatcher;
+﻿namespace SeedWork.DomainEvent;
 
 public abstract class DomainEventHandlerWrapper<TDomainEvent> : DomainEventHandlerBase where TDomainEvent : IDomainEvent
 {

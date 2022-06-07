@@ -1,5 +1,5 @@
 ﻿using SeedWork;
-using SeedWork.CommandDispatcher;
+using SeedWork.Command;
 
 namespace Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
 

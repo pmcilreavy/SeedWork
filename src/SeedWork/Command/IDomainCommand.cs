@@ -1,4 +1,4 @@
-﻿namespace SeedWork.CommandDispatcher;
+﻿namespace SeedWork.Command;
 
 public interface IDomainCommand<out TResult>
 {
