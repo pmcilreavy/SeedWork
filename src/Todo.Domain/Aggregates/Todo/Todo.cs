@@ -19,13 +19,7 @@ public class Todo : AggregateRoot
     public string Title { get; private set; }
     public string Description { get; private set; }
 
-    public void SetTitle(string title)
-    {
-        Title = title;
-    }
+    public void SetTitle(string title) => Title = title;
 
-    public void SetDescription(string description)
-    {
-        Description = description;
-    }
+    public void SetDescription(string description) => Description = description;
 }

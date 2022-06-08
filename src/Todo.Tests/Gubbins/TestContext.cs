@@ -12,15 +12,9 @@ namespace Todo.Tests.Gubbins;
 
 public class TestContext : WebApplicationFactory<Program>, IAsyncLifetime
 {
-    public Task InitializeAsync()
-    {
-        return Task.CompletedTask;
-    }
+    public Task InitializeAsync() => Task.CompletedTask;
 
-    Task IAsyncLifetime.DisposeAsync()
-    {
-        return DisposeAsync().AsTask();
-    }
+    Task IAsyncLifetime.DisposeAsync() => DisposeAsync().AsTask();
 
     protected override void ConfigureWebHost(IWebHostBuilder builder)
     {

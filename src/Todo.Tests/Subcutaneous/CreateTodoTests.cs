@@ -9,10 +9,7 @@ public class CreateTodoTests
 {
     private readonly TestContext _context;
 
-    public CreateTodoTests(TestContext context)
-    {
-        _context = context;
-    }
+    public CreateTodoTests(TestContext context) => _context = context;
 
     [Fact]
     public async Task GivenRequest_WhenValid_ThenTodoIsCreated()

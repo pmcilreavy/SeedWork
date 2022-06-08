@@ -27,8 +27,5 @@ public class TodoBuilder
         return this;
     }
 
-    public Domain.Aggregates.Todo.Todo Build()
-    {
-        return new Domain.Aggregates.Todo.Todo(_id, _title, _description);
-    }
+    public Domain.Aggregates.Todo.Todo Build() => new(_id, _title, _description);
 }

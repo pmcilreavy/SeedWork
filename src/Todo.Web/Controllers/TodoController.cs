@@ -9,10 +9,7 @@ public class TodoController : ControllerBase
 {
     private readonly CreateTodoCommandHandler _createTodoCommandHandler;
 
-    public TodoController(CreateTodoCommandHandler createTodoCommandHandler)
-    {
-        _createTodoCommandHandler = createTodoCommandHandler;
-    }
+    public TodoController(CreateTodoCommandHandler createTodoCommandHandler) => _createTodoCommandHandler = createTodoCommandHandler;
 
     /*
      * POST: Create a new entity when the user is not expected to know/create an id.

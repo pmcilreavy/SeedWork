@@ -11,10 +11,8 @@ public class TodoContext : DbContext, IWriteRepository
     private readonly IDomainEventDispatcher _domainEventDispatcher;
 
     public TodoContext(DbContextOptions<TodoContext> options, IDomainEventDispatcher domainEventDispatcher) :
-        base(options)
-    {
+        base(options) =>
         _domainEventDispatcher = domainEventDispatcher;
-    }
 
     public DbSet<Domain.Aggregates.Todo.Todo> Todos => Set<Domain.Aggregates.Todo.Todo>();
 
@@ -46,10 +44,7 @@ public class TodoContext : DbContext, IWriteRepository
         }
     }
 
-    public new T Add<T>(T aggregate) where T : AggregateRoot
-    {
-        return Set<T>().Add(aggregate).Entity;
-    }
+    public new T Add<T>(T aggregate) where T : AggregateRoot => Set<T>().Add(aggregate).Entity;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

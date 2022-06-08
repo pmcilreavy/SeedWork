@@ -44,20 +44,11 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
         CreatedBy = createdBy;
     }
 
-    private bool IsTransient()
-    {
-        return Id == default;
-    }
+    private bool IsTransient() => Id == default;
 
-    public void AddDomainEvent(IDomainEvent eventItem)
-    {
-        _domainEvents.Add(eventItem);
-    }
+    public void AddDomainEvent(IDomainEvent eventItem) => _domainEvents.Add(eventItem);
 
-    public void ClearDomainEvents()
-    {
-        _domainEvents.Clear();
-    }
+    public void ClearDomainEvents() => _domainEvents.Clear();
 
     public override bool Equals(object? obj)
     {

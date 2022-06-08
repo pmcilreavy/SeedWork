@@ -7,10 +7,8 @@ public class DomainEventHandlerWrapperImpl<TDomainEvent> : DomainEventHandlerWra
 {
     public override Task Handle(object notification,
                                 IServiceProvider services,
-                                CancellationToken cancellation = default)
-    {
-        return Handle((TDomainEvent)notification, services, cancellation);
-    }
+                                CancellationToken cancellation = default) =>
+        Handle((TDomainEvent)notification, services, cancellation);
 
     public override Task Handle(TDomainEvent notification,
                                 IServiceProvider services,
