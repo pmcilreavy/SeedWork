@@ -7,8 +7,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Scrutor" Version="4.1.0" />
-		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+		<InternalsVisibleTo Include="Todo.Tests" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Scrutor" Version="4.2.0" />
+		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.1" />
 	</ItemGroup>
 
 	<ItemGroup>

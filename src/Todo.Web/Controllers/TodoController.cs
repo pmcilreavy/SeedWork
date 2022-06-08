@@ -21,7 +21,7 @@ public class TodoController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Guid>> Create([FromBody] CreateTodoDto dto, CancellationToken cancellationToken)
     {
-        var createdId = await _createTodoCommandHandler.Handle(new CreateTodoCommand(dto.Title), cancellationToken);
+        var createdId = await _createTodoCommandHandler.Handle(new CreateTodoCommand(dto.Title, dto.Description), cancellationToken);
 
         return Created($"{Request.Path}/{createdId}", createdId);
     }

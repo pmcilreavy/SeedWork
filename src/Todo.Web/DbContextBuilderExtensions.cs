@@ -13,7 +13,12 @@ public static class DbContextBuilderExtensions
     {
         if (enableSensitiveDataLogging) options.EnableSensitiveDataLogging();
 
-        options.UseSqlite(databaseConnectionString,
+        options.ConfigureWarnings(builder => builder.Throw());
+        options.EnableDetailedErrors();
+        options.EnableServiceProviderCaching();
+        options.EnableThreadSafetyChecks();
+
+        options.UseSqlServer(databaseConnectionString,
             sqlOptions =>
             {
                 sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);

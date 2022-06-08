@@ -14,7 +14,7 @@ public class CreateTodoCommandHandler : ICommandHandler<CreateTodoCommand, Guid>
 
     public async Task<Guid> Handle(CreateTodoCommand command, CancellationToken cancellationToken)
     {
-        var newTodo = new Todo(Guid.NewGuid(), command.Title);
+        var newTodo = new Todo(Guid.NewGuid(), command.Title, command.Description);
 
         _writer.Add(newTodo);
 

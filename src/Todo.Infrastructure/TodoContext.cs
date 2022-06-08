@@ -14,8 +14,6 @@ public class TodoContext : DbContext, IWriteRepository
         base(options)
     {
         _domainEventDispatcher = domainEventDispatcher;
-
-        Database.EnsureCreated();
     }
 
     public DbSet<Domain.Aggregates.Todo.Todo> Todos => Set<Domain.Aggregates.Todo.Todo>();

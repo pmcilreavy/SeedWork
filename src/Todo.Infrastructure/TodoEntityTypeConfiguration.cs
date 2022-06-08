@@ -3,20 +3,15 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Todo.Infrastructure;
 
-public class TodoEntityTypeConfiguration : IEntityTypeConfiguration<Domain.Aggregates.Todo.Todo>
+public class TodoEntityTypeConfiguration : DefaultEntityTypeConfiguration<Domain.Aggregates.Todo.Todo>
 {
-    public void Configure(EntityTypeBuilder<Domain.Aggregates.Todo.Todo> configuration)
+    public override void Configure(EntityTypeBuilder<Domain.Aggregates.Todo.Todo> configuration)
     {
-        configuration.HasKey(a => a.Id);
-        configuration.Property(a => a.Id).ValueGeneratedOnAdd();
+        base.Configure(configuration);
 
         configuration.Property(a => a.Title).HasMaxLength(250).IsRequired();
-
-        configuration.Property(a => a.CreatedBy);
-        configuration.Property(a => a.CreatedOn);
-        configuration.Property(a => a.ModifiedBy);
-        configuration.Property(a => a.ModifiedOn);
-
+        configuration.Property(a => a.Description).HasMaxLength(500).IsRequired();
+        
         configuration.ToTable(nameof(Todo), "dbo");
     }
 }
