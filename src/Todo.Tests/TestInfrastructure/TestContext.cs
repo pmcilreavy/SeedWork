@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 using Todo.Infrastructure;
 using Xunit;
 
-namespace Todo.Tests.Gubbins;
+namespace Todo.Tests.TestInfrastructure;
 
 public class TestContext : WebApplicationFactory<Program>, IAsyncLifetime
 {

@@ -1,7 +1,8 @@
-using Xunit;
+﻿using Xunit;
 
 namespace Todo.Tests.Unit;
 
+[Trait("Category", "Unit")]
 public class CanaryTests
 {
     [Fact]

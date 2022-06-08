@@ -1,7 +1,7 @@
-using System.Text;
+﻿using System.Text;
 using System.Text.Json;
 
-namespace Todo.Tests.Gubbins;
+namespace Todo.Tests.TestInfrastructure;
 
 public class JsonContent : StringContent
 {

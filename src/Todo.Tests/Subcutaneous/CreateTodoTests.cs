@@ -1,9 +1,10 @@
-using Todo.Tests.Gubbins;
+﻿using Todo.Tests.TestInfrastructure;
 using Todo.Web.Controllers;
 using Xunit;
 
 namespace Todo.Tests.Subcutaneous;
 
+[Trait("Category", "Subcutaneous")]
 [Collection(nameof(TestFixtureCollection))]
 public class CreateTodoTests
 {

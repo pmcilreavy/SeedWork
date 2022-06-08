@@ -1,6 +1,6 @@
-using Xunit;
+﻿using Xunit;
 
-namespace Todo.Tests.Gubbins;
+namespace Todo.Tests.TestInfrastructure;
 
 [CollectionDefinition(nameof(TestFixtureCollection))]
 public class TestFixtureCollection : ICollectionFixture<TestContext>

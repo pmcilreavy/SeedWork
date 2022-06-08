@@ -1,6 +1,6 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 
-namespace Todo.Tests.Gubbins;
+namespace Todo.Tests.TestInfrastructure;
 
 public static class RequestHelper
 {

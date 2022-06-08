@@ -1,6 +1,6 @@
-using Todo.Web.Controllers;
+﻿using Todo.Web.Controllers;
 
-namespace Todo.Tests.Gubbins;
+namespace Todo.Tests.TestInfrastructure;
 
 public static class TodoApiHelper
 {
