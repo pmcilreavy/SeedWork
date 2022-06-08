@@ -16,7 +16,10 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
 
     protected AggregateRoot(Guid id)
     {
-        if (id == default) throw new ArgumentException("An id must be supplied", nameof(id));
+        if (id == default)
+        {
+            throw new ArgumentException("An id must be supplied", nameof(id));
+        }
 
         Id = id;
     }
@@ -58,12 +61,26 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
 
     public override bool Equals(object? obj)
     {
-        if (ReferenceEquals(null, obj)) return false;
-        if (ReferenceEquals(this, obj)) return true;
-        if (obj.GetType() != GetType()) return false;
+        if (ReferenceEquals(null, obj))
+        {
+            return false;
+        }
 
-        var ar = (AggregateRoot) obj;
-        if (ar.IsTransient() || IsTransient()) return false;
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        if (obj.GetType() != GetType())
+        {
+            return false;
+        }
+
+        var ar = (AggregateRoot)obj;
+        if (ar.IsTransient() || IsTransient())
+        {
+            return false;
+        }
 
         return ar.Id == Id;
     }
@@ -71,7 +88,10 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
     [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
     {
-        if (IsTransient()) return base.GetHashCode();
+        if (IsTransient())
+        {
+            return base.GetHashCode();
+        }
 
         _hashCode ??=
             Id.GetHashCode() ^ 31; // (https://ericlippert.com/2011/02/28/guidelines-and-rules-for-gethashcode/)

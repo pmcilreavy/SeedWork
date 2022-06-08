@@ -14,7 +14,7 @@ public class DomainEventDispatcher : IDomainEventDispatcher
     {
         var handlerType = typeof(DomainEventHandlerWrapperImpl<>).MakeGenericType(domainEvent.GetType());
 
-        var handler = (DomainEventHandlerBase) Activator.CreateInstance(handlerType)!;
+        var handler = (DomainEventHandlerBase)Activator.CreateInstance(handlerType)!;
 
         await handler.Handle(domainEvent, _serviceProvider, cancellationToken);
     }

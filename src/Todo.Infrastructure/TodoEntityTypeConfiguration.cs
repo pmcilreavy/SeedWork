@@ -11,7 +11,7 @@ public class TodoEntityTypeConfiguration : DefaultEntityTypeConfiguration<Domain
 
         configuration.Property(a => a.Title).HasMaxLength(250).IsRequired();
         configuration.Property(a => a.Description).HasMaxLength(500).IsRequired();
-        
+
         configuration.ToTable(nameof(Todo), "dbo");
     }
 }

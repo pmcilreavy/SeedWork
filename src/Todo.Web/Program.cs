@@ -6,40 +6,39 @@ using Todo.Domain;
 using Todo.Infrastructure;
 using Todo.Web;
 
-public partial class Program
+public class Program
 {
-
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.Scan(scan => scan
-            .FromAssemblies(TheDomain.Assembly)
-            .AddClasses(classes =>
-                classes.AssignableTo(typeof(ICommandHandler<,>)))
-            .AsImplementedInterfaces()
-            .AsSelf()
-            .WithTransientLifetime());
+                                      .FromAssemblies(TheDomain.Assembly)
+                                      .AddClasses(classes =>
+                                                      classes.AssignableTo(typeof(ICommandHandler<,>)))
+                                      .AsImplementedInterfaces()
+                                      .AsSelf()
+                                      .WithTransientLifetime());
 
         builder.Services.Scan(scan => scan
-            .FromAssemblies(TheDomain.Assembly)
-            .AddClasses(classes =>
-                classes.AssignableTo(typeof(IDomainEventHandler<>)))
-            .AsImplementedInterfaces()
-            .AsSelf()
-            .WithTransientLifetime());
+                                      .FromAssemblies(TheDomain.Assembly)
+                                      .AddClasses(classes =>
+                                                      classes.AssignableTo(typeof(IDomainEventHandler<>)))
+                                      .AsImplementedInterfaces()
+                                      .AsSelf()
+                                      .WithTransientLifetime());
 
         builder.Services.AddDbContext<TodoContext>(
-            options =>
-            {
-                options.ConfigureDbContext(
-                    false,
-                    //"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Parnian\\documents\\visual studio 2017\\Projects\\Bank\\Bank\\Database.mdf;Integrated Security=True",
-                    //"Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Todos;Integrated Security=True",
-                    builder.Configuration["DbConnectionString"],
-                    30,
-                    TheInfrastructure.Assembly.FullName!);
-            });
+                                                   options =>
+                                                   {
+                                                       options.ConfigureDbContext(
+                                                                                  false,
+                                                                                  //"Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\Parnian\\documents\\visual studio 2017\\Projects\\Bank\\Bank\\Database.mdf;Integrated Security=True",
+                                                                                  //"Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=Todos;Integrated Security=True",
+                                                                                  builder.Configuration["DbConnectionString"],
+                                                                                  30,
+                                                                                  TheInfrastructure.Assembly.FullName!);
+                                                   });
 
         builder.Services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
         builder.Services.TryAddScoped<IWriteRepository, TodoContext>();

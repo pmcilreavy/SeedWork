@@ -2,6 +2,7 @@
 
 public abstract class DomainEventHandlerBase
 {
-    public abstract Task Handle(object notification, IServiceProvider services,
-        CancellationToken cancellation = default);
+    public abstract Task Handle(object notification,
+                                IServiceProvider services,
+                                CancellationToken cancellation = default);
 }

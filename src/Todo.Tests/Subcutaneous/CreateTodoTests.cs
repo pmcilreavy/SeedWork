@@ -1,5 +1,3 @@
-using System;
-using System.Threading.Tasks;
 using Todo.Tests.Gubbins;
 using Todo.Web.Controllers;
 using Xunit;

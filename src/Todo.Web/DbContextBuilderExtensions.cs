@@ -11,7 +11,10 @@ public static class DbContextBuilderExtensions
         int databaseCommandTimeout,
         string migrationsAssembly)
     {
-        if (enableSensitiveDataLogging) options.EnableSensitiveDataLogging();
+        if (enableSensitiveDataLogging)
+        {
+            options.EnableSensitiveDataLogging();
+        }
 
         options.ConfigureWarnings(builder => builder.Throw());
         options.EnableDetailedErrors();
@@ -19,11 +22,11 @@ public static class DbContextBuilderExtensions
         options.EnableThreadSafetyChecks();
 
         options.UseSqlServer(databaseConnectionString,
-            sqlOptions =>
-            {
-                sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);
-                sqlOptions.MigrationsAssembly(migrationsAssembly);
-                sqlOptions.CommandTimeout(databaseCommandTimeout == 0 ? 60 : databaseCommandTimeout);
-            });
+                             sqlOptions =>
+                             {
+                                 sqlOptions.UseQuerySplittingBehavior(QuerySplittingBehavior.SingleQuery);
+                                 sqlOptions.MigrationsAssembly(migrationsAssembly);
+                                 sqlOptions.CommandTimeout(databaseCommandTimeout == 0 ? 60 : databaseCommandTimeout);
+                             });
     }
 }
