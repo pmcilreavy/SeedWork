@@ -1,4 +1,4 @@
-# SeedWork
+﻿# SeedWork
 
 > "A seedwork is some minimal functionality that you modify however you like to get what you need. Of course, this means that there's no way for you to get common updates to the seedwork. Once you grow it, you own it." _Martin Fowler_
 
@@ -7,7 +7,8 @@
 Just some of the things still to be added...
 
 - Improved README
-- ResetTheWorld script
+- ☑️ ~~Initial ResetTheWorld script~~
+- ☑️ ~~Test coverage~~
 - Convention tests/analyzers
 - Enforce one repo per Aggregate
 - Guard clauses
