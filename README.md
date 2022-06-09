@@ -10,6 +10,7 @@ Just some of the things still to be added...
 - ResetTheWorld script
 - Convention tests/analyzers
 - Enforce one repo per Aggregate
+- Guard clauses
 - Specifications
 - Query execution
 - Value Objects
@@ -19,7 +20,9 @@ Just some of the things still to be added...
 - Integration events
 - Logging
 - More interesting domain(s) than Todo
+- Authentication
 - A UI
 - UI Type generation (i.e. typescript objects)
 - UI State Management
+- Horizontal scaling considerations (i.e. server state etc)
 - Docker support
