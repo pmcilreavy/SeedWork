@@ -6,7 +6,7 @@ public static class TodoApiHelper
 {
     public static async Task<Guid> CreateTodo(this HttpClient client, CreateTodoDto request)
     {
-        var response = await client.PostAsync<Guid>("/todo", request);
+        var response = await client.PostAsync<Guid>("/api/todo", request);
 
         return response;
     }

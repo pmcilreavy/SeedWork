@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
 
 namespace Todo.Web.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("api/[controller]")]
 public class TodoController : ControllerBase
 {
     private readonly CreateTodoCommandHandler _createTodoCommandHandler;
