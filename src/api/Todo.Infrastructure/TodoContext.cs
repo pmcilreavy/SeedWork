@@ -6,7 +6,7 @@ using Todo.Domain.Exceptions;
 
 namespace Todo.Infrastructure;
 
-public class TodoContext : DbContext, IWriteRepository
+public class TodoContext : DbContext, IWriteRepository, IReadRepository
 {
     private readonly IDomainEventDispatcher _domainEventDispatcher;
 
@@ -45,6 +45,8 @@ public class TodoContext : DbContext, IWriteRepository
     }
 
     public new T Add<T>(T aggregate) where T : AggregateRoot => Set<T>().Add(aggregate).Entity;
+
+    public IQueryable<T> GetTable<T>() where T : AggregateRoot => Set<T>().AsNoTracking().AsQueryable();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

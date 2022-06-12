@@ -5,6 +5,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Coverage\**" />
+	  <EmbeddedResource Remove="Coverage\**" />
+	  <None Remove="Coverage\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<None Remove="appsettings.test.json" />
 	</ItemGroup>
 

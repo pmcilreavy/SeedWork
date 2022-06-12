@@ -1,4 +1,4 @@
-using Microsoft.Extensions.DependencyInjection.Extensions;
+﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using SeedWork;
 using SeedWork.Command;
 using SeedWork.DomainEvent;
@@ -42,7 +42,9 @@ public class Program
 
         builder.Services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
         builder.Services.TryAddScoped<IWriteRepository, TodoContext>();
+        builder.Services.TryAddScoped<IReadRepository, TodoContext>();
 
+        builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyOrigin()));
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -61,6 +63,7 @@ public class Program
             app.UseSwaggerUI();
         }
 
+        app.UseCors();
         app.UseHttpsRedirection();
         app.UseAuthorization();
         app.MapControllers();
