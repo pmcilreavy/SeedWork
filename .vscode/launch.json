@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  // "compounds": [
+  //   {
+  //     "name": "Launch Backend & Frontend",
+  //     "configurations": ["Launch Backend"]
+  //   }
+  // ],
+  "configurations": [
+    {
+      // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
+      "name": "launch-backend",
+      "type": "coreclr",
+      "request": "launch",
+      "launchBrowser": {
+        "enabled": false
+      },
+      "justMyCode": true,
+      "preLaunchTask": "build-dotnet",
+      "program": "${workspaceFolder}\\src\\api\\Todo.Web\\bin\\Debug\\net6.0\\Todo.Web.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}\\src\\api\\Todo.Web",
+      "stopAtEntry": false,
+      "env": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+    // {
+    //   "command": "npm start",
+    //   "name": "launch-frontend",
+    //   "request": "launch",
+    //   "type": "node-terminal"
+    // }
+  ]
+}

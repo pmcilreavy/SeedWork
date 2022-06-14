@@ -16,6 +16,8 @@ public class TodoContext : DbContext, IWriteRepository, IReadRepository
 
     public DbSet<Domain.Aggregates.Todo.Todo> Todos => Set<Domain.Aggregates.Todo.Todo>();
 
+    public IQueryable<T> GetTable<T>() where T : AggregateRoot => Set<T>().AsNoTracking().AsQueryable();
+
     public async Task SaveAsync(CancellationToken cancellationToken = default)
     {
         var domainEntities = ChangeTracker.Entries<AggregateRoot>()
@@ -45,8 +47,6 @@ public class TodoContext : DbContext, IWriteRepository, IReadRepository
     }
 
     public new T Add<T>(T aggregate) where T : AggregateRoot => Set<T>().Add(aggregate).Entity;
-
-    public IQueryable<T> GetTable<T>() where T : AggregateRoot => Set<T>().AsNoTracking().AsQueryable();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

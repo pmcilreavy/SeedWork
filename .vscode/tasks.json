@@ -1,0 +1,58 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build-backend",
+      "command": "dotnet",
+      "type": "shell",
+      "group": "build",
+      "args": ["build", "\"${workspaceFolder}\\src\\api\\SeedWork.sln\""],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "test-backend",
+      "command": "dotnet",
+      "type": "shell",
+      "group": "test",
+      "args": ["test", "\"${workspaceFolder}\\src\\api\\SeedWork.sln\""],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "create-ui-from-template",
+      "command": "npx",
+      "type": "shell",
+      "group": "build",
+      "args": [
+        "create-react-app",
+        "${workspaceFolder}\\src\\ui-from-template\\",
+        "--template",
+        "file:${workspaceFolder}\\src\\cra-template-seedwork\\"
+      ],
+      "presentation": {
+        "reveal": "always"
+      },
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "delete-ui-from-template",
+      "command": "Remove-Item",
+      "type": "shell",
+      "group": "build",
+      "windows": {
+        "args": ["\"${workspaceFolder}\\src\\ui-from-template\"", "-Recurse"]
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
