@@ -1,4 +1,6 @@
 {
+  "name": "cra-template-seedwork",
+  "version": "1.0.0",
   "dependencies": {
     "formik": "^2.2.9",
     "ky": "^0.30.0",
