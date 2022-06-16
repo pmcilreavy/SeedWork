@@ -1,10 +1,11 @@
 # cra-template-seedwork
 
 - cra-template-typescript
-- - node-sass
-- - mobx-state-tree
-- - prettier
-- - eslint
+  - - node-sass
+  - - mobx-state-tree
+  - - prettier
+  - - eslint
+  - - tailwind
 
 ## Available Scripts
 
