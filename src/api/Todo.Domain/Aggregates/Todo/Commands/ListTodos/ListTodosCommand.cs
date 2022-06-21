@@ -1,5 +1,5 @@
-﻿using SeedWork.Command;
+﻿//using SeedWork.Command;
 
-namespace Todo.Domain.Aggregates.Todo.Commands.ListTodos;
+//namespace Todo.Domain.Aggregates.Todo.Commands.ListTodos;
 
-public record ListTodosCommand : IDomainCommand<IReadOnlyCollection<ListTodoDto>>;
+//public record ListTodosCommand : IDomainCommand<IReadOnlyCollection<ListTodoDto>>;

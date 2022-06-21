@@ -1,5 +1,5 @@
 ﻿using Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
-using Todo.Domain.Aggregates.Todo.Commands.ListTodos;
+using Todo.Domain.Aggregates.Todo.Queries;
 
 namespace Todo.Tests.TestInfrastructure;
 

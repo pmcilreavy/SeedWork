@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
-using Todo.Domain.Aggregates.Todo.Commands.ListTodos;
+using Todo.Domain.Aggregates.Todo.Queries;
 
 namespace Todo.Web.Controllers;
 
@@ -9,12 +9,12 @@ namespace Todo.Web.Controllers;
 public class TodoController : ControllerBase
 {
     private readonly CreateTodoCommandHandler _createTodoCommandHandler;
-    private readonly ListTodosCommandHandler _listTodosCommandHandler;
+    private readonly ListTodosQueryHandler _listTodosQueryHandler;
 
-    public TodoController(CreateTodoCommandHandler createTodoCommandHandler, ListTodosCommandHandler listTodosCommandHandler)
+    public TodoController(CreateTodoCommandHandler createTodoCommandHandler, ListTodosQueryHandler listTodosQueryHandler)
     {
         _createTodoCommandHandler = createTodoCommandHandler;
-        _listTodosCommandHandler = listTodosCommandHandler;
+        _listTodosQueryHandler = listTodosQueryHandler;
     }
 
     /*
@@ -34,7 +34,7 @@ public class TodoController : ControllerBase
     [Route("list")]
     public async Task<ActionResult<IReadOnlyCollection<ListTodoDto>>> List(CancellationToken cancellationToken)
     {
-        var results = await _listTodosCommandHandler.Handle(new ListTodosCommand(), cancellationToken);
+        var results = await _listTodosQueryHandler.Handle(cancellationToken);
 
         return new OkObjectResult(results);
     }

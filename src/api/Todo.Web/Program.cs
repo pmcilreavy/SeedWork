@@ -2,6 +2,7 @@
 using SeedWork;
 using SeedWork.Command;
 using SeedWork.DomainEvent;
+using SeedWork.Query;
 using Todo.Domain;
 using Todo.Infrastructure;
 using Todo.Web;
@@ -28,6 +29,22 @@ public class Program
                                       .AsSelf()
                                       .WithTransientLifetime());
 
+        builder.Services.Scan(scan => scan
+                                      .FromAssemblies(TheDomain.Assembly)
+                                      .AddClasses(classes =>
+                                                      classes.AssignableTo(typeof(IQueryHandler<>)))
+                                      .AsImplementedInterfaces()
+                                      .AsSelf()
+                                      .WithTransientLifetime());
+
+        builder.Services.Scan(scan => scan
+                                      .FromAssemblies(TheDomain.Assembly)
+                                      .AddClasses(classes =>
+                                                      classes.AssignableTo(typeof(IQueryHandler<,>)))
+                                      .AsImplementedInterfaces()
+                                      .AsSelf()
+                                      .WithTransientLifetime());
+
         builder.Services.AddDbContext<TodoContext>(
                                                    options =>
                                                    {
@@ -43,6 +60,7 @@ public class Program
         builder.Services.TryAddScoped<IDomainEventDispatcher, DomainEventDispatcher>();
         builder.Services.TryAddScoped<IWriteRepository, TodoContext>();
         builder.Services.TryAddScoped<IReadRepository, TodoContext>();
+        builder.Services.TryAddScoped<IDbConnectionProvider>(provider => new SqlServerConnectionProvider(builder.Configuration["DbConnectionString"]));
 
         builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyOrigin()));
         builder.Services.AddControllers();

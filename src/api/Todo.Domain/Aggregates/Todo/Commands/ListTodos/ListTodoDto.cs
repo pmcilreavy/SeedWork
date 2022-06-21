@@ -1,3 +1,3 @@
-﻿namespace Todo.Domain.Aggregates.Todo.Commands.ListTodos;
+﻿//namespace Todo.Domain.Aggregates.Todo.Commands.ListTodos;
 
-public record ListTodoDto(Guid Id, string Title, string Description);
+//public record ListTodoDto(Guid Id, string Title, string Description);
