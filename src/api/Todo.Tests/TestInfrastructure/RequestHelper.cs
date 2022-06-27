@@ -12,7 +12,12 @@ public static class RequestHelper
 
         if (httpResponse.IsSuccessStatusCode)
         {
-            var responseObject = JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
+            var responseObject = JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                PropertyNameCaseInsensitive = false,
+            })!;
 
             return new Result<T>(httpResponse, responseObject, content);
         }
@@ -28,7 +33,12 @@ public static class RequestHelper
 
         if (httpResponse.IsSuccessStatusCode)
         {
-            var responseObject = JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
+            var responseObject = JsonSerializer.Deserialize<T>(content, new JsonSerializerOptions
+            {
+                WriteIndented = true,
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                PropertyNameCaseInsensitive = false,
+            })!;
 
             return new Result<T>(httpResponse, responseObject, content);
         }
