@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using SeedWork;
+using Todo.Domain.Abstractions;
 
-namespace Todo.Infrastructure;
+namespace Todo.Infrastructure.Persistance.EntityConfiguration;
 
 public abstract class DefaultEntityTypeConfiguration<T> : IEntityTypeConfiguration<T> where T : class
 {

@@ -1,4 +1,6 @@
-﻿namespace SeedWork.DomainEvent;
+﻿using Todo.Domain.Abstractions.DomainEvent;
+
+namespace Todo.Application.Abstractions.DomainEvent;
 
 public abstract class DomainEventHandlerWrapper<TDomainEvent> : DomainEventHandlerBase where TDomainEvent : IDomainEvent
 {

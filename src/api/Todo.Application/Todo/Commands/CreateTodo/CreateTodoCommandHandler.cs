@@ -1,5 +1,5 @@
-﻿using SeedWork;
-using SeedWork.Command;
+﻿using Todo.Domain.Abstractions;
+using Todo.Domain.Abstractions.Command;
 
 namespace Todo.Application.Todo.Commands.CreateTodo;
 

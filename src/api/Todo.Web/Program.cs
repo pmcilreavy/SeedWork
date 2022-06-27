@@ -1,11 +1,15 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
-using SeedWork;
-using SeedWork.Command;
-using SeedWork.DomainEvent;
-using SeedWork.Query;
+using Todo.Application;
+using Todo.Application.Abstractions.DomainEvent;
 using Todo.Domain;
+using Todo.Domain.Abstractions;
+using Todo.Domain.Abstractions.Command;
+using Todo.Domain.Abstractions.DomainEvent;
+using Todo.Domain.Abstractions.Query;
 using Todo.Infrastructure;
-using Todo.Web;
+using Todo.Infrastructure.Persistance;
+
+namespace Todo.Web;
 
 public class Program
 {
@@ -14,7 +18,7 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Services.Scan(scan => scan
-                                      .FromAssemblies(TheDomain.Assembly)
+                                      .FromAssemblies(TheApplication.Assembly)
                                       .AddClasses(classes =>
                                                       classes.AssignableTo(typeof(ICommandHandler<,>)))
                                       .AsImplementedInterfaces()
@@ -22,7 +26,7 @@ public class Program
                                       .WithTransientLifetime());
 
         builder.Services.Scan(scan => scan
-                                      .FromAssemblies(TheDomain.Assembly)
+                                      .FromAssemblies(TheApplication.Assembly)
                                       .AddClasses(classes =>
                                                       classes.AssignableTo(typeof(IDomainEventHandler<>)))
                                       .AsImplementedInterfaces()
@@ -30,7 +34,7 @@ public class Program
                                       .WithTransientLifetime());
 
         builder.Services.Scan(scan => scan
-                                      .FromAssemblies(TheDomain.Assembly)
+                                      .FromAssemblies(TheApplication.Assembly)
                                       .AddClasses(classes =>
                                                       classes.AssignableTo(typeof(IQueryHandler<>)))
                                       .AsImplementedInterfaces()
@@ -38,7 +42,7 @@ public class Program
                                       .WithTransientLifetime());
 
         builder.Services.Scan(scan => scan
-                                      .FromAssemblies(TheDomain.Assembly)
+                                      .FromAssemblies(TheApplication.Assembly)
                                       .AddClasses(classes =>
                                                       classes.AssignableTo(typeof(IQueryHandler<,>)))
                                       .AsImplementedInterfaces()

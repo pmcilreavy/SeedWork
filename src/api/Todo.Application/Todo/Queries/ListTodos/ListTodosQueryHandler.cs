@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using SeedWork.Query;
+using Todo.Domain.Abstractions.Query;
 
 namespace Todo.Application.Todo.Queries.ListTodos;
 

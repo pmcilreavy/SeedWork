@@ -1,4 +1,4 @@
-﻿namespace SeedWork.DomainEvent;
+﻿namespace Todo.Application.Abstractions.DomainEvent;
 
 public abstract class DomainEventHandlerBase
 {

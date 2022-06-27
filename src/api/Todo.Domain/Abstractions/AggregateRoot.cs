@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
-using SeedWork.DomainEvent;
+using Todo.Domain.Abstractions.DomainEvent;
 
-namespace SeedWork;
+namespace Todo.Domain.Abstractions;
 
 public abstract class AggregateRoot : IAggregateRoot, IAuditable
 {

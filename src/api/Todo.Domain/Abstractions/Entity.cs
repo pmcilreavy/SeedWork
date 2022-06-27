@@ -1,4 +1,4 @@
-﻿namespace SeedWork;
+﻿namespace Todo.Domain.Abstractions;
 
 public abstract class Entity : IEntity
 {

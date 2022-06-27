@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
-using SeedWork.DomainEvent;
+using Todo.Domain.Abstractions.DomainEvent;
+using Todo.Domain.Aggregates.Todo;
 
 namespace Todo.Application.Todo.DomainEvents.TodoCreated;
 

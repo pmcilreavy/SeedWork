@@ -1,4 +1,6 @@
-﻿namespace SeedWork.DomainEvent;
+﻿using Todo.Domain.Abstractions.DomainEvent;
+
+namespace Todo.Application.Abstractions.DomainEvent;
 
 public class DomainEventDispatcher : IDomainEventDispatcher
 {

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace SeedWork.Query;
+namespace Todo.Domain.Abstractions.Query;
 
 public interface IDbConnectionProvider
 {

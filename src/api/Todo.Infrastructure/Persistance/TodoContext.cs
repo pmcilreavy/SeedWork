@@ -1,10 +1,10 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using SeedWork;
-using SeedWork.DomainEvent;
+using Todo.Domain.Abstractions;
+using Todo.Domain.Abstractions.DomainEvent;
 using Todo.Domain.Exceptions;
 
-namespace Todo.Infrastructure;
+namespace Todo.Infrastructure.Persistance;
 
 public class TodoContext : DbContext, IWriteRepository, IReadRepository
 {

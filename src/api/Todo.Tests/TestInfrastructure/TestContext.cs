@@ -5,7 +5,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Todo.Infrastructure;
+using Todo.Infrastructure.Persistance;
+using Todo.Web;
 using Xunit;
 
 namespace Todo.Tests.TestInfrastructure;

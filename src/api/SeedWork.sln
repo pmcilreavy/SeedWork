@@ -22,6 +22,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Todo.Application", "Todo.Application\Todo.Application.csproj", "{D2181B61-6449-4235-9C2B-C751906788F2}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{4F7009E1-E3B8-4CFD-8C43-6F744F67340C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Periphery", "Periphery", "{6C42E5E9-0ABE-4E11-BA40-185A97D27449}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3BD6EA56-6421-4B37-AE87-E429159AE222} = {4F7009E1-E3B8-4CFD-8C43-6F744F67340C}
+		{DFD017D3-5B26-41A5-8743-37371BBF17A8} = {6C42E5E9-0ABE-4E11-BA40-185A97D27449}
+		{27FFADF9-7D76-4165-AC01-062452BF7BB1} = {6C42E5E9-0ABE-4E11-BA40-185A97D27449}
+		{3622016B-9F9D-412F-9D05-2BBF28E627FF} = {6C42E5E9-0ABE-4E11-BA40-185A97D27449}
+		{D2181B61-6449-4235-9C2B-C751906788F2} = {4F7009E1-E3B8-4CFD-8C43-6F744F67340C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B0990D53-E38B-416C-A4E1-0A9B2DE5A2E4}

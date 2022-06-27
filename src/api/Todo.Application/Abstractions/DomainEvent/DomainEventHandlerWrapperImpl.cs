@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Todo.Domain.Abstractions.DomainEvent;
 
-namespace SeedWork.DomainEvent;
+namespace Todo.Application.Abstractions.DomainEvent;
 
 public class DomainEventHandlerWrapperImpl<TDomainEvent> : DomainEventHandlerWrapper<TDomainEvent>
     where TDomainEvent : IDomainEvent

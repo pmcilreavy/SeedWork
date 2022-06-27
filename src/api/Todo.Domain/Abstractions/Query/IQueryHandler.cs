@@ -1,4 +1,4 @@
-﻿namespace SeedWork.Query;
+﻿namespace Todo.Domain.Abstractions.Query;
 
 public interface IQueryHandler<in TQuery, TQueryResult>
 {

@@ -1,8 +1,8 @@
 ﻿using System.Data;
 using Microsoft.Data.SqlClient;
-using SeedWork.Query;
+using Todo.Domain.Abstractions.Query;
 
-namespace Todo.Infrastructure;
+namespace Todo.Infrastructure.Persistance;
 
 public class SqlServerConnectionProvider : IDbConnectionProvider
 {
