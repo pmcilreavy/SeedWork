@@ -1,5 +1,5 @@
 ﻿using SeedWork.DomainEvent;
 
-namespace Todo.Domain.Aggregates.Todo.DomainEvents.TodoCreated;
+namespace Todo.Application.Todo.DomainEvents.TodoCreated;
 
 public record TodoCreatedEvent(Guid TodoId) : IDomainEvent;

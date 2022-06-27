@@ -1,5 +1,5 @@
-﻿using Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
-using Todo.Domain.Aggregates.Todo.Queries;
+﻿using Todo.Application.Todo.Commands.CreateTodo;
+using Todo.Application.Todo.Queries.ListTodos;
 
 namespace Todo.Tests.TestInfrastructure;
 
@@ -12,9 +12,9 @@ public static class TodoApiHelper
         return (result.ResponseObject, result.HttpResponse, result.Body);
     }
 
-    public static async Task<(IReadOnlyCollection<ListTodoDto>? Results, HttpResponseMessage HttpResponse, string Body)> ListTodos(this HttpClient client)
+    public static async Task<(IReadOnlyCollection<ListTodosDto>? Results, HttpResponseMessage HttpResponse, string Body)> ListTodos(this HttpClient client)
     {
-        var result = await client.GetAsync<IReadOnlyCollection<ListTodoDto>>("/api/todo/list");
+        var result = await client.GetAsync<IReadOnlyCollection<ListTodosDto>>("/api/todo/list");
 
         return (result.ResponseObject, result.HttpResponse, result.Body);
     }

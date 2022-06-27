@@ -1,7 +1,7 @@
 ﻿using SeedWork;
 using SeedWork.Command;
 
-namespace Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
+namespace Todo.Application.Todo.Commands.CreateTodo;
 
 public class CreateTodoCommandHandler : ICommandHandler<CreateTodoCommand, Guid>
 {
@@ -11,7 +11,7 @@ public class CreateTodoCommandHandler : ICommandHandler<CreateTodoCommand, Guid>
 
     public async Task<Guid> Handle(CreateTodoCommand command, CancellationToken cancellationToken)
     {
-        var newTodo = new Todo(Guid.NewGuid(), command.Title, command.Description);
+        var newTodo = new Domain.Aggregates.Todo.Todo(Guid.NewGuid(), command.Title, command.Description);
 
         _writer.Add(newTodo);
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
-using Todo.Domain.Aggregates.Todo.Queries;
+using Todo.Application.Todo.Commands.CreateTodo;
+using Todo.Application.Todo.Queries.ListTodos;
 
 namespace Todo.Web.Controllers;
 
@@ -20,6 +20,7 @@ public class TodoController : ControllerBase
     /*
      * POST: Create a new entity when the user is not expected to know/create an id.
      *       Not guaranteed to be idempotent.
+     *       https://restfulapi.net/http-methods/#post
      */
     [HttpPost]
     [Route("create")]
@@ -30,9 +31,12 @@ public class TodoController : ControllerBase
         return Created($"{Request.Path}/{createdId}", createdId);
     }
 
+    /*
+     * https://restfulapi.net/http-methods/#get
+     */
     [HttpGet]
     [Route("list")]
-    public async Task<ActionResult<IReadOnlyCollection<ListTodoDto>>> List(CancellationToken cancellationToken)
+    public async Task<ActionResult<IReadOnlyCollection<ListTodosDto>>> List(CancellationToken cancellationToken)
     {
         var results = await _listTodosQueryHandler.Handle(cancellationToken);
 

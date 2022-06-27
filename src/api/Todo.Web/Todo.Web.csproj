@@ -10,7 +10,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\SeedWork\SeedWork.csproj" />
+		<ProjectReference Include="..\Todo.Application\Todo.Application.csproj" />
 		<ProjectReference Include="..\Todo.Domain\Todo.Domain.csproj" />
 		<ProjectReference Include="..\Todo.Infrastructure\Todo.Infrastructure.csproj" />
 	</ItemGroup>

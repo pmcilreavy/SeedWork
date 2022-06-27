@@ -1,3 +1,3 @@
-﻿namespace Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
+﻿namespace Todo.Application.Todo.Commands.CreateTodo;
 
 public record CreateTodoDto(string Title, string Description);

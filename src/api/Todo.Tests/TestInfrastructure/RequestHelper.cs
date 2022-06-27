@@ -2,8 +2,6 @@
 
 namespace Todo.Tests.TestInfrastructure;
 
-public record Result<T>(HttpResponseMessage HttpResponse, T? ResponseObject, string Body);
-
 public static class RequestHelper
 {
     public static async Task<Result<T>> PostAsync<T>(this HttpClient client, string uri, object request)

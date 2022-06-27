@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using SeedWork.DomainEvent;
 
-namespace Todo.Domain.Aggregates.Todo.DomainEvents.TodoCreated;
+namespace Todo.Application.Todo.DomainEvents.TodoCreated;
 
 public class TodoCreatedEventHandler : IDomainEventHandler<TodoCreatedEvent>
 {

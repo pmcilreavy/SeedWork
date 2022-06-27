@@ -1,5 +1,5 @@
 ﻿using SeedWork;
-using Todo.Domain.Aggregates.Todo.DomainEvents.TodoCreated;
+using Todo.Application.Todo.DomainEvents.TodoCreated;
 
 namespace Todo.Domain.Aggregates.Todo;
 

@@ -1,4 +1,4 @@
-﻿using Todo.Domain.Aggregates.Todo.Commands.CreateTodo;
+﻿using Todo.Application.Todo.Commands.CreateTodo;
 using Todo.Tests.TestInfrastructure;
 using Xunit;
 

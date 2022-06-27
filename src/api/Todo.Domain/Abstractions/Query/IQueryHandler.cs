@@ -1,8 +1,6 @@
-﻿using System.Data;
+﻿namespace SeedWork.Query;
 
-namespace SeedWork.Query;
-
-public interface IQueryHandler<in TQuery, TQueryResult> 
+public interface IQueryHandler<in TQuery, TQueryResult>
 {
     string GetSql();
 
@@ -14,9 +12,4 @@ public interface IQueryHandler<TQueryResult>
     string GetSql();
 
     Task<TQueryResult> Handle(CancellationToken cancellation = default);
-}
-
-public interface IDbConnectionProvider
-{
-    IDbConnection Create();
 }
