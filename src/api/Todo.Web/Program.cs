@@ -1,9 +1,7 @@
 ﻿using System.Text.Json;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Todo.Application;
 using Todo.Application.Abstractions.DomainEvent;
-using Todo.Domain;
 using Todo.Domain.Abstractions;
 using Todo.Domain.Abstractions.Command;
 using Todo.Domain.Abstractions.DomainEvent;
@@ -73,9 +71,9 @@ public class Program
         builder.Services.AddControllers()
                .AddJsonOptions(o =>
                {
-                  o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
-                  o.JsonSerializerOptions.WriteIndented = true;
-                  o.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
+                   o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                   o.JsonSerializerOptions.WriteIndented = true;
+                   o.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
                });
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();

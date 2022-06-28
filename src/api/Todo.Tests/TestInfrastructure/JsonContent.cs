@@ -10,7 +10,7 @@ public class JsonContent : StringContent
                                               {
                                                   WriteIndented = true,
                                                   PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                                                  PropertyNameCaseInsensitive = false,
+                                                  PropertyNameCaseInsensitive = false
                                               }),
                                               Encoding.UTF8,
                                               "application/json")

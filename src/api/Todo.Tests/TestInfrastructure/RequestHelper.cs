@@ -16,7 +16,7 @@ public static class RequestHelper
             {
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                PropertyNameCaseInsensitive = false,
+                PropertyNameCaseInsensitive = false
             })!;
 
             return new Result<T>(httpResponse, responseObject, content);
@@ -37,7 +37,7 @@ public static class RequestHelper
             {
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                PropertyNameCaseInsensitive = false,
+                PropertyNameCaseInsensitive = false
             })!;
 
             return new Result<T>(httpResponse, responseObject, content);

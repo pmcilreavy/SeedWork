@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Todo.Domain.Abstractions;
 using Todo.Infrastructure.Persistance;
 using Todo.Web;
 using Xunit;
@@ -47,8 +48,16 @@ public class TestContext : WebApplicationFactory<Program>, IAsyncLifetime
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
 
-            // TODO
-            // init db with dbup
+            var ctx = serviceProvider.GetRequiredService<IWriteRepository>();
+
+            ctx.Add(TestSeedData.TodoOne);
+
+            ctx.SaveAsync(CancellationToken.None).GetAwaiter().GetResult();
         });
+    }
+
+    public static class TestSeedData
+    {
+        public static readonly Domain.Aggregates.Todo.Todo TodoOne = new(Guid.NewGuid(), "Title One", "Description One");
     }
 }
