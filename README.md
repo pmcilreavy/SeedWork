@@ -13,7 +13,7 @@ Just some of the things still to be added...
 - Enforce one repo per Aggregate
 - Guard clauses
 - Specifications
-- Query execution via dapper
+- ☑️ ~~Query execution via dapper~~
 - Value Objects
 - Enumeration classes
 - AppSettings/Config
