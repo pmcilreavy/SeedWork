@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+﻿using Hellang.Middleware.ProblemDetails;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Todo.Application;
 using Todo.Application.Abstractions.DomainEvent;
@@ -8,7 +8,6 @@ using Todo.Domain.Abstractions.DomainEvent;
 using Todo.Domain.Abstractions.Query;
 using Todo.Infrastructure;
 using Todo.Infrastructure.Persistance;
-using Todo.Web.Infrastructure;
 
 namespace Todo.Web;
 
@@ -67,13 +66,14 @@ public class Program
         builder.Services.TryAddScoped<IReadRepository, TodoContext>();
         builder.Services.TryAddScoped<IDbConnectionProvider>(provider => new SqlServerConnectionProvider(builder.Configuration["DbConnectionString"]));
 
+        builder.Services.AddProblemDetails();
         builder.Services.AddCors(options => options.AddDefaultPolicy(policyBuilder => policyBuilder.AllowAnyOrigin()));
         builder.Services.AddControllers()
                .AddJsonOptions(o =>
                {
-                   o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                   //o.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                    o.JsonSerializerOptions.WriteIndented = true;
-                   o.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
+                   //o.JsonSerializerOptions.PropertyNameCaseInsensitive = false;
                });
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -85,7 +85,7 @@ public class Program
         //x.ForEach(s => Debug.WriteLine(s!));
 
         var app = builder.Build();
-        app.UseMiddleware<ErrorHandlerMiddleware>();
+        app.UseProblemDetails();
 
         if (app.Environment.IsDevelopment())
         {

@@ -55,9 +55,4 @@ public class TestContext : WebApplicationFactory<Program>, IAsyncLifetime
             ctx.SaveAsync(CancellationToken.None).GetAwaiter().GetResult();
         });
     }
-
-    public static class TestSeedData
-    {
-        public static readonly Domain.Aggregates.Todo.Todo TodoOne = new(Guid.NewGuid(), "Title One", "Description One");
-    }
 }

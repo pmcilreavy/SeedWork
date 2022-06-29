@@ -9,11 +9,6 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
 
     private int? _hashCode;
 
-    // ReSharper disable once UnusedMember.Global
-    protected AggregateRoot()
-    {
-    }
-
     protected AggregateRoot(Guid id)
     {
         if (id == default)
@@ -75,6 +70,24 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
 
         return ar.Id == Id;
     }
+
+    public static bool operator ==(AggregateRoot left, AggregateRoot right)
+    {
+
+        if (left is null)
+        {
+            if (right is null)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        return left.Equals(right);
+    }
+
+    public static bool operator !=(AggregateRoot left, AggregateRoot right) => !(left == right);
 
     [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
     public override int GetHashCode()
