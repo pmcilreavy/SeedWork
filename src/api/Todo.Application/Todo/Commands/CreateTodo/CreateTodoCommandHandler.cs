@@ -1,13 +1,13 @@
-﻿using Todo.Domain.Abstractions;
+﻿using Todo.Application.Abstractions;
 using Todo.Domain.Abstractions.Command;
 
 namespace Todo.Application.Todo.Commands.CreateTodo;
 
 public class CreateTodoCommandHandler : ICommandHandler<CreateTodoCommand, Guid>
 {
-    private readonly IWriteRepository _writer;
+    private readonly ITodoWriteRepository _writer;
 
-    public CreateTodoCommandHandler(IWriteRepository writer) => _writer = writer;
+    public CreateTodoCommandHandler(ITodoWriteRepository writer) => _writer = writer;
 
     public async Task<Guid> Handle(CreateTodoCommand command, CancellationToken cancellationToken)
     {

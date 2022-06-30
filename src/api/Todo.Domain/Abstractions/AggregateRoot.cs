@@ -11,10 +11,7 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
 
     protected AggregateRoot(Guid id)
     {
-        if (id == default)
-        {
-            throw new ArgumentException("An id must be supplied", nameof(id));
-        }
+        GuardAgainst.ArgumentBeingEmpty(id, "An Id must be supplied");
 
         Id = id;
     }
@@ -73,7 +70,6 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
 
     public static bool operator ==(AggregateRoot left, AggregateRoot right)
     {
-
         if (left is null)
         {
             if (right is null)

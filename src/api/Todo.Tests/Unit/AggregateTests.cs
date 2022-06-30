@@ -58,10 +58,7 @@ public class AggregateTests
     [Fact]
     public void GivenAnEmptyGuid_WhenPassedToAggregateConstructor_ThenArgumentExceptionThrown()
     {
-        var ex = Assert.Throws<ArgumentException>(() =>
-        {
-            _ = new Domain.Aggregates.Todo.Todo(Guid.Empty, "the title 1", "the description 1");
-        });
+        var ex = Assert.Throws<ArgumentException>(() => { _ = new Domain.Aggregates.Todo.Todo(Guid.Empty, "the title 1", "the description 1"); });
 
         Assert.Equal(nameof(AggregateRoot.Id).ToLowerInvariant(), ex.ParamName);
     }

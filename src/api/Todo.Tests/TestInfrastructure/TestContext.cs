@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Todo.Domain.Abstractions;
+using Todo.Application.Abstractions;
 using Todo.Infrastructure.Persistance;
 using Todo.Web;
 using Xunit;
@@ -48,7 +48,7 @@ public class TestContext : WebApplicationFactory<Program>, IAsyncLifetime
             db.Database.EnsureDeleted();
             db.Database.EnsureCreated();
 
-            var ctx = serviceProvider.GetRequiredService<IWriteRepository>();
+            var ctx = serviceProvider.GetRequiredService<ITodoWriteRepository>();
 
             ctx.Add(TestSeedData.TodoOne);
 

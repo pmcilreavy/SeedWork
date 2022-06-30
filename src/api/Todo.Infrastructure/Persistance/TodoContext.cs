@@ -1,12 +1,13 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using Todo.Application.Abstractions;
 using Todo.Domain.Abstractions;
 using Todo.Domain.Abstractions.DomainEvent;
 using Todo.Domain.Exceptions;
 
 namespace Todo.Infrastructure.Persistance;
 
-public class TodoContext : DbContext, IWriteRepository, IReadRepository
+public class TodoContext : DbContext, ITodoWriteRepository
 {
     private readonly IDomainEventDispatcher _domainEventDispatcher;
 
@@ -14,11 +15,12 @@ public class TodoContext : DbContext, IWriteRepository, IReadRepository
         base(options) =>
         _domainEventDispatcher = domainEventDispatcher;
 
-    public DbSet<Domain.Aggregates.Todo.Todo> Todos => Set<Domain.Aggregates.Todo.Todo>();
+    public Domain.Aggregates.Todo.Todo Add(Domain.Aggregates.Todo.Todo aggregate) => Set<Domain.Aggregates.Todo.Todo>().Add(aggregate).Entity;
 
-    public IQueryable<T> GetTable<T>() where T : AggregateRoot => Set<T>().AsNoTracking().AsQueryable();
+    public Task<Domain.Aggregates.Todo.Todo> GetByIdAsync(Guid id, CancellationToken cancellationToken) =>
+        Set<Domain.Aggregates.Todo.Todo>().AsNoTracking().SingleAsync(o => o.Id == id, cancellationToken);
 
-    public async Task SaveAsync(CancellationToken cancellationToken = default)
+    public async Task SaveAsync(CancellationToken cancellationToken)
     {
         var domainEntities = ChangeTracker.Entries<AggregateRoot>()
                                           .Where(x => x.Entity.DomainEvents.Any())
@@ -45,8 +47,6 @@ public class TodoContext : DbContext, IWriteRepository, IReadRepository
             throw new ConcurrencyException("This record has been modified.");
         }
     }
-
-    public new T Add<T>(T aggregate) where T : AggregateRoot => Set<T>().Add(aggregate).Entity;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
