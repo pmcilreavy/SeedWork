@@ -20,7 +20,7 @@ public class AggregateRootConventionTests
     public void GivenAnAggregate_AllPropertiesMustHavePrivateSetters()
     {
         TypeHelper.AllAggregates()
-                  .MustConformTo(Convention.PropertiesMustHavePrivateSetters)
+                  .MustConformTo(new PropertiesMustHavePrivateSettersOrNoSettersConventionSpecification())
                   .WithFailureAssertion(msg => Assert.True(false, msg));
     }
 

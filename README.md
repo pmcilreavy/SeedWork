@@ -14,6 +14,7 @@ Just some of the things still to be added...
 - ☑️ ~~Initial Guard clause class~~
 - Specifications
 - ☑️ ~~Query execution via dapper~~
+- Domain Events
 - Value Objects
 - Enumeration classes
 - AppSettings/Config

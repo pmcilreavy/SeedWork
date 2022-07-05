@@ -47,3 +47,5 @@ internal class PropertiesMustNotBeDeriveFromTypeConventionSpecification : Conven
         return ConventionResult.NotSatisfied(type.FullName, message);
     }
 }
+
+// Slightly different to the method in Conventional

@@ -1,5 +1,6 @@
 ﻿using Todo.Application.Abstractions;
 using Todo.Domain.Abstractions.Command;
+using Todo.Domain.Aggregates.Todo;
 
 namespace Todo.Application.Todo.Commands.CreateTodo;
 
@@ -11,7 +12,7 @@ public class CreateTodoCommandHandler : ICommandHandler<CreateTodoCommand, Guid>
 
     public async Task<Guid> Handle(CreateTodoCommand command, CancellationToken cancellationToken)
     {
-        var newTodo = new Domain.Aggregates.Todo.Todo(Guid.NewGuid(), command.Title, command.Description);
+        var newTodo = new Domain.Aggregates.Todo.Todo(Guid.NewGuid(), command.Title, command.Description, Array.Empty<TodoStep>());
 
         _writer.Add(newTodo);
 

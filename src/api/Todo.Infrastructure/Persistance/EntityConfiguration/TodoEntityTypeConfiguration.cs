@@ -14,4 +14,6 @@ public class TodoEntityTypeConfiguration : DefaultEntityTypeConfiguration<Domain
 
         configuration.ToTable(nameof(Todo), "dbo");
     }
+
+
 }

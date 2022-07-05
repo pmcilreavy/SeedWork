@@ -9,9 +9,14 @@ public abstract class AggregateRoot : IAggregateRoot, IAuditable
 
     private int? _hashCode;
 
+    // ReSharper disable once UnusedMember.Global
+    protected AggregateRoot()
+    {
+    }
+
     protected AggregateRoot(Guid id)
     {
-        GuardAgainst.ArgumentBeingEmpty(id, "An Id must be supplied");
+        GuardAgainst.ArgumentBeingEmpty(id, msg: "An Id must be supplied");
 
         Id = id;
     }

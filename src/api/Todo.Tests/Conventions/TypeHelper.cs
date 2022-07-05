@@ -10,10 +10,10 @@ public static class TypeHelper
 {
     public static IEnumerable<Type> AllExportedTypes()
     {
-        return typeof(TheApplication).Assembly.GetExportedTypes()
-                                     .Union(typeof(TheDomain).Assembly.GetExportedTypes())
-                                     .Union(typeof(TheInfrastructure).Assembly.GetExportedTypes())
-                                     .Union(typeof(TheWeb).Assembly.GetExportedTypes());
+        return TheApplication.Assembly.GetExportedTypes()
+                                     .Union(TheDomain.Assembly.GetExportedTypes())
+                                     .Union(TheInfrastructure.Assembly.GetExportedTypes())
+                                     .Union(TheWeb.Assembly.GetExportedTypes());
     }
 
     public static Type[] AllAggregates()
