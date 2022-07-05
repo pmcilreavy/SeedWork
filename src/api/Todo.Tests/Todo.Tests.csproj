@@ -23,6 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="Best.Conventional" Version="10.0.0" />
 		<PackageReference Include="FluentAssertions" Version="6.7.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="6.0.6" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.2.0" />

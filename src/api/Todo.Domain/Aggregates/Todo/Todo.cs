@@ -4,6 +4,8 @@ namespace Todo.Domain.Aggregates.Todo;
 
 public class Todo : AggregateRoot
 {
+    protected Todo() { }
+
     public Todo(
         Guid id,
         string title,
@@ -15,10 +17,10 @@ public class Todo : AggregateRoot
         AddDomainEvent(new TodoCreatedEvent(id));
     }
 
-    public string Title { get; private set; }
-    public string Description { get; private set; }
+    public string Title { get; private set; } = null!;
+    public string Description { get; private set; } = null!;
+    //public IEnumerable<X> DescriptiXon { get;  set; } = null!;
 
     public void SetTitle(string title) => Title = title;
-
     public void SetDescription(string description) => Description = description;
 }
