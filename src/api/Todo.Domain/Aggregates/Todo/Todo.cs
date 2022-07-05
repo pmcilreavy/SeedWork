@@ -21,6 +21,7 @@ public class Todo : AggregateRoot
     public string Description { get; private set; } = null!;
     //public IEnumerable<X> DescriptiXon { get;  set; } = null!;
 
-    public void SetTitle(string title) => Title = title;
-    public void SetDescription(string description) => Description = description;
+    //public void SetTitle(string title) => Title = title;
+
+    //public void SetDescription(string description) => Description = description;
 }

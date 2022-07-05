@@ -10,16 +10,16 @@ Just some of the things still to be added...
 - ☑️ ~~Initial ResetTheWorld script~~
 - ☑️ ~~Test coverage~~
 - Convention tests/analyzers
-- Enforce one repo per Aggregate
-- Guard clauses
+- ☑️ ~~One write repo per Aggregate~~
+- ☑️ ~~Initial Guard clause class~~
 - Specifications
-- Query execution via dapper
+- ☑️ ~~Query execution via dapper~~
 - Value Objects
 - Enumeration classes
 - AppSettings/Config
 - Auditing
 - Integration events
-- Logging
+- ☑️ ~~Serilog Logging~~
 - More interesting domain(s) than Todo
 - Authentication
 - A UI

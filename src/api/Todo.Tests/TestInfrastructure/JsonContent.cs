@@ -5,12 +5,9 @@ namespace Todo.Tests.TestInfrastructure;
 
 public class JsonContent : StringContent
 {
-    public JsonContent(object @object) : base(
-                                              JsonSerializer.Serialize(@object, new JsonSerializerOptions
+    public JsonContent(object @object) : base(JsonSerializer.Serialize(@object, new JsonSerializerOptions(JsonSerializerDefaults.Web)
                                               {
-                                                  WriteIndented = true,
-                                                  PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                                                  PropertyNameCaseInsensitive = false,
+                                                  WriteIndented = true
                                               }),
                                               Encoding.UTF8,
                                               "application/json")

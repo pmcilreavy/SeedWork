@@ -28,4 +28,6 @@ public class TodoBuilder
     }
 
     public Domain.Aggregates.Todo.Todo Build() => new(_id, _title, _description);
+
+    public static TodoBuilder Default() => new();
 }

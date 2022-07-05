@@ -351,3 +351,4 @@ MigrationBackup/
 src/Todo.Tests/Coverage/History
 
 src/ui-from-template/
+src/api/Todo.Web/appsettings.Development.json
