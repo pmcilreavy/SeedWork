@@ -6,8 +6,8 @@ public class TodoBuilder
 {
     private string _description = "";
     private Guid _id = Guid.Empty;
-    private string _title = "";
     private IList<TodoStep> _steps = new List<TodoStep>();
+    private string _title = "";
 
     public TodoBuilder WithId(Guid id)
     {

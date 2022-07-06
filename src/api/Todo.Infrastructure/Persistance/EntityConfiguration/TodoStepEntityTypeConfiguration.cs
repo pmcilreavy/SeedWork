@@ -4,9 +4,9 @@ using Todo.Domain.Aggregates.Todo;
 
 namespace Todo.Infrastructure.Persistance.EntityConfiguration;
 
-public class TodoStepEntityTypeConfiguration : DefaultEntityTypeConfiguration<Domain.Aggregates.Todo.TodoStep>
+public class TodoStepEntityTypeConfiguration : DefaultEntityTypeConfiguration<TodoStep>
 {
-    public override void Configure(EntityTypeBuilder<Domain.Aggregates.Todo.TodoStep> configuration)
+    public override void Configure(EntityTypeBuilder<TodoStep> configuration)
     {
         base.Configure(configuration);
 
@@ -15,6 +15,4 @@ public class TodoStepEntityTypeConfiguration : DefaultEntityTypeConfiguration<Do
 
         configuration.ToTable(nameof(TodoStep), "dbo");
     }
-
-
 }

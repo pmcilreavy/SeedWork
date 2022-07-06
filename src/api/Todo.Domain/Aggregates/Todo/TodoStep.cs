@@ -4,7 +4,9 @@ namespace Todo.Domain.Aggregates.Todo;
 
 public class TodoStep : Entity
 {
-    protected TodoStep() { }
+    protected TodoStep()
+    {
+    }
 
     public TodoStep(string name, uint order)
     {
@@ -13,6 +15,6 @@ public class TodoStep : Entity
         Name = name;
     }
 
-    public string Name { get; private set; } = null!;
-    public uint Order { get; private set; } = default;
+    public string Name { get; } = null!;
+    public uint Order { get; } = default;
 }

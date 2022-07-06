@@ -10,14 +10,12 @@ internal class PropertiesMustHavePrivateSettersOrNoSettersConventionSpecificatio
     protected override PropertyInfo[] GetNonConformingProperties(Type type)
     {
         var thing = GetDeclaredProperties(type)
-                    .Where(subject => subject.CanWrite == true && subject.GetSetMethod(true)!.IsPrivate == false)
+                    .Where(subject => subject.CanWrite && subject.GetSetMethod(true)!.IsPrivate == false)
                     .ToArray();
 
         return thing;
     }
 
-    private static PropertyInfo[] GetDeclaredProperties(Type type)
-    {
-        return type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
-    }
+    private static PropertyInfo[] GetDeclaredProperties(Type type) =>
+        type.GetProperties(BindingFlags.DeclaredOnly | BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public);
 }

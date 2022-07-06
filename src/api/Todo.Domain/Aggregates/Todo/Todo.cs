@@ -4,8 +4,12 @@ namespace Todo.Domain.Aggregates.Todo;
 
 public class Todo : AggregateRoot
 {
+    private readonly IList<TodoStep> _steps = new List<TodoStep>();
+
     // ReSharper disable once UnusedMember.Global
-    protected Todo() { }
+    protected Todo()
+    {
+    }
 
     public Todo(
         Guid id,
@@ -24,8 +28,6 @@ public class Todo : AggregateRoot
 
     public string Title { get; private set; } = null!;
     public string Description { get; private set; } = null!;
-
-    private IList<TodoStep> _steps = new List<TodoStep>();
     public IReadOnlyCollection<TodoStep> Steps => _steps.OrderBy(o => o.Order).ToArray();
 
     public void SetTitle(string title)
@@ -37,8 +39,5 @@ public class Todo : AggregateRoot
 
     public void SetDescription(string description) => Description = description;
 
-    public void AddStep(string title)
-    {
-        _steps.Add(new TodoStep(title, _steps.Max(o => o.Order) + 1));
-    }
+    public void AddStep(string title) => _steps.Add(new TodoStep(title, _steps.Max(o => o.Order) + 1));
 }
